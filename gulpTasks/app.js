@@ -39,7 +39,7 @@ function appIMG(){
 }
 
 
-module.exports.default={
+module.exports={
     appHTML,
     appCSS,
     appJS,

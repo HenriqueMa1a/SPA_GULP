@@ -1,19 +1,19 @@
+const gulp = require('gulp')
 
 
 
 
-
-function depsCSS(){
-
+function depsCSS(cb){
+    return cb
 }
 
 
-function fontsCSS(){
-
+function depsFonts(cb){
+    return cb
 }
 
 
-module.exports.default={
-    fontsCSS,
+module.exports={
+    depsFonts,
     depsCSS
 }
