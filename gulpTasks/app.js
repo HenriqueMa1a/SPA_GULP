@@ -1,15 +1,15 @@
-const {series} = require('gulp')
-const gulp = require('gulp')
 const sass = require('gulp-sass')(require('sass'))
 const uglify = require('gulp-uglify')
-const uglifycss = require('gulp-uglify')
+const uglifycss = require('gulp-uglifycss')
 const concat = require('gulp-concat')
 const gulp = require('gulp')
 const babel = require('gulp-babel')
+const htmlmin = require('gulp-htmlmin')
 
 
 function appHTML(){
-    return gulp.src('src/index.html')
+    return gulp.src('src/**/*.html')
+    .pipe(htmmin({collapseWhitespace: true })) //tirar espaços em branco
     .pipe(gulp.dest('build'))
 }
 
@@ -23,10 +23,8 @@ function appCSS(){
 
 
 function appJS(){
-    return gulp.src('src/assets/js/navegacao.js')
-    .pipe(babel({
-        comments:false,
-        presets: ["env"]}))
+    return gulp.src('src/assets/js/**/*.js')
+    .pipe(babel({presets: ["env"]}))
     .pipe(uglify())
     .pipe(concat('app.min.js'))
     .pipe(gulp.dest('build/assets/js'))
@@ -34,7 +32,7 @@ function appJS(){
 
 
 function appIMG(){
-    return gulp.src('src/assets/imgs/**')
+    return gulp.src('src/assets/imgs/**/*.*')
     .pipe(gulp.dest('build/assets/imgs'))
 }
 
