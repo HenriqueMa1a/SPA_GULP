@@ -9,7 +9,7 @@ const htmlmin = require('gulp-htmlmin')
 
 function appHTML(){
     return gulp.src('src/**/*.html')
-    .pipe(htmmin({collapseWhitespace: true })) //tirar espaços em branco
+    .pipe(htmlmin({collapseWhitespace: true })) //tirar espaços em branco
     .pipe(gulp.dest('build'))
 }
 
@@ -36,6 +36,10 @@ function appIMG(){
     .pipe(gulp.dest('build/assets/imgs'))
 }
 
+gulp.task('appHTML', appHTML)
+gulp.task('appCSS', appCSS)
+gulp.task('appJS', appJS)
+gulp.task('appIMG', appIMG)
 
 module.exports={
     appHTML,
